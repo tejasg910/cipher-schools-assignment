@@ -38,3 +38,16 @@ export const registerUser = async (req, res, next) => {
     return next(new ErrorHandler(error.message, 500));
   }
 };
+
+export const getUserDetails = async (req, res, next) => {
+  const user = await User.findById(req.user);
+
+  res
+    .status(200)
+
+    .json({
+      success: true,
+
+      user,
+    });
+};
