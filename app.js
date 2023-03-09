@@ -1,6 +1,8 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const userRoutes = require("./routes/userRoutes");
+import express from "express";
+import userRoutes from "./routes/userRoutes.js";
+import dotenv from "dotenv";
+import ErrorMiddleWare from "./middleware/catchAsyncError.js";
+
 dotenv.config({
   path: "./config/config.env",
 });
@@ -8,5 +10,6 @@ dotenv.config({
 const app = express();
 
 app.use("/", userRoutes);
+export default app;
 
-module.exports = app;
+app.use(ErrorMiddleWare);
