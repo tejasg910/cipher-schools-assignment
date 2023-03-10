@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-
+import mongoose from "mongoose";
 const VideoSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -26,6 +25,14 @@ const VideoSchema = new mongoose.Schema({
       },
     },
   ],
+  video: {
+    public_id: {
+      type: String,
+    },
+    url: {
+      type: String,
+    },
+  },
   views: Number,
   createdAt: {
     type: Date,
@@ -33,6 +40,4 @@ const VideoSchema = new mongoose.Schema({
   },
 });
 
-const Video = mongoose.model("Video", VideoSchema);
-
-module.exports = Video;
+export const Video = mongoose.model("Video", VideoSchema);
