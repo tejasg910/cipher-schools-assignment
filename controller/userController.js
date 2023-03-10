@@ -2,7 +2,7 @@ import { User } from "../model/User.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import { sendToken } from "../utils/sendToken.js";
 
-export const loginUser = async () => {
+export const loginUser = async (req, res) => {
   const { email, password } = req.body;
   // const file  =req.file;
 

@@ -4,7 +4,7 @@ const VideoSchema = new mongoose.Schema({
     type: String,
   },
   creator: { type: String },
-  likes: { type: Number },
+  likes: { type: Number, default: 0 },
   comments: [
     {
       title: String,
@@ -33,7 +33,7 @@ const VideoSchema = new mongoose.Schema({
       type: String,
     },
   },
-  views: Number,
+  views: { type: Number, default: 0 },
   createdAt: {
     type: Date,
     default: Date.now,
