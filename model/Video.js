@@ -11,12 +11,9 @@ const VideoSchema = new mongoose.Schema({
       user: String,
       replies: [
         {
-          title: String,
+          title: { type: String, default: null },
+
           user: String,
-          date: {
-            type: Date,
-            default: Date.now,
-          },
         },
       ],
       date: {

@@ -7,6 +7,11 @@ const UserSchema = new mongoose.Schema({
   },
   email: { type: String },
   password: { type: String },
+  liked: [
+    {
+      videoId: String,
+    },
+  ],
   notifications: [{ title: String }],
 });
 
