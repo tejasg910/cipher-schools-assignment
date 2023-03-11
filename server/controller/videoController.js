@@ -6,7 +6,7 @@ import ErrorHandler from "../utils/errorHandler.js";
 export const addVideo = async (req, res, next) => {
   try {
     const { title, creator } = req.body;
-    console.log(title, creator);
+    // console.log(title, creator);
     if (!title && !creator)
       return next(new ErrorHandler("Please add all fields", 400));
     const { file } = req.files;
@@ -66,7 +66,7 @@ export const getVideoDetails = async (req, res, next) => {
 
 export const addComments = async (req, res, next) => {
   try {
-    console.log(req.user);
+    // console.log(req.user);
     const { id } = req.params;
 
     const { title, reply, main } = req.body;

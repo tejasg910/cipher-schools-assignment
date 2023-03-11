@@ -2,7 +2,7 @@ import { User } from "../model/User.js";
 import ErrorHandler from "../utils/errorHandler.js";
 import { sendToken } from "../utils/sendToken.js";
 
-export const loginUser = async (req, res) => {
+export const loginUser = async (req, res, next) => {
   const { email, password } = req.body;
   // const file  =req.file;
 
@@ -24,7 +24,7 @@ export const loginUser = async (req, res) => {
 export const registerUser = async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
-
+    // console.log(username, email, password);
     const findUser = await User.findOne({ email });
     if (findUser)
       return next(new ErrorHandler("This email already exists", 409));
