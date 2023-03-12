@@ -26,7 +26,7 @@ export const addVideo = async (req, res, next) => {
 
     res.status(201).json({
       success: true,
-      message: "Course created successfully, you can add lectures now",
+      message: "video created successfully",
     });
   } catch (error) {
     console.log(error);

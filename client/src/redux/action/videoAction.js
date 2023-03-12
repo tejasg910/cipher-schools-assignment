@@ -23,7 +23,7 @@ export const getVideo = (params) => async (dispatch) => {
     const { data } = await axios.get(`${server}/api/get-video/${params}`, {
       withCredentials: true,
     });
-    console.log(data);
+
     dispatch({ type: "getVideoSuccess", payload: data.data });
   } catch (error) {
     dispatch({
@@ -42,7 +42,7 @@ export const getVideoDetails = (params) => async (dispatch) => {
         withCredentials: true,
       }
     );
-    console.log(data);
+
     dispatch({ type: "getVideoDetailsSuccess", payload: data.data });
   } catch (error) {
     dispatch({
@@ -58,7 +58,6 @@ export const likeVideo = (params) => async (dispatch) => {
     const { data } = await axios.get(`${server}/api/add-like/${params}`, {
       withCredentials: true,
     });
-    console.log(data);
 
     dispatch({ type: "likeVideoSuccess", payload: data.liked });
   } catch (error) {
@@ -75,12 +74,31 @@ export const getComments = (params) => async (dispatch) => {
     const { data } = await axios.get(`${server}/api/add-like/${params}`, {
       withCredentials: true,
     });
-    console.log(data);
 
     dispatch({ type: "likeVideoSuccess", payload: data.liked });
   } catch (error) {
     dispatch({
       type: "likeVideoFail",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+export const addComment = (params, comment) => async (dispatch) => {
+  try {
+    dispatch({ type: "addCommentRequest" });
+    const { data } = await axios.get(
+      `${server}/api/add-comment/${params}`,
+      { comment },
+      {
+        withCredentials: true,
+      }
+    );
+
+    dispatch({ type: "addCommentSuccess", payload: data.comments });
+  } catch (error) {
+    dispatch({
+      type: "addCommentFail",
       payload: error.response.data.message,
     });
   }

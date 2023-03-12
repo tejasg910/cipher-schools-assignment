@@ -11,19 +11,24 @@ const VideoInfo = () => {
         views: "",
         liked: false,
     })
+
+
+    const [videoTitle, setVideoTitle] = useState("");
     const dispatch = useDispatch()
     const { details, liked } = useSelector((state) => state.video)
-    console.log(details)
+
     useEffect(() => {
         dispatch(getVideoDetails(params.id))
 
         setTimeout(() => {
             setDetails({ views: details.views, likes: details.likes, liked: liked })
+            setVideoTitle(details.title)
         }, 100);
     }, [params.id, dispatch, liked]);
 
 
     const addLike = () => {
+        console.log(params.id)
         dispatch(likeVideo(params.id))
     }
     return (
@@ -32,7 +37,7 @@ const VideoInfo = () => {
             <p className='likes'> <span onClick={addLike} className='like-video' >{videodetails.liked ? <AiOutlineLike /> : <AiFillLike />}</span>: {videodetails.likes}</p>
 
         </div>
-            <h3 className='video__title'>THis is the best vieoo on the internt</h3></div>
+            {<h3 className='video__title'>{videoTitle}</h3>}</div>
     )
 }
 

@@ -21,7 +21,6 @@ function App() {
       dispatch({ type: "clearError" });
     }
     if (message) {
-      console.log(message);
       dispatch({ type: "clearMessage" });
     }
   }, [dispatch, error, message]);

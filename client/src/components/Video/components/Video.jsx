@@ -9,7 +9,7 @@ const Video = () => {
     const [url, setUrl] = useState("")
     const dispatch = useDispatch()
     const { video } = useSelector((state) => state.video)
-    console.log(video, "from video comonent")
+
     useEffect(() => {
 
 

@@ -1,28 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import { getVideo } from '../../../redux/action/videoAction';
+import { addComment, getVideo, getVideoDetails } from '../../../redux/action/videoAction';
 const Comments = () => {
     const params = useParams();
-
+    const [mainComment, setMainComment] = useState("");
     const dispatch = useDispatch()
-    const { video } = useSelector((state) => state.video)
-    console.log(video, "from video comonent")
-    useEffect(() => {
+    const { details } = useSelector((state) => state.video)
+    const onMainComment = (e) => {
+        setMainComment(e.target.value)
+    }
 
 
-        dispatch(getVideo(params.id))
-        setTimeout(() => {
 
-        }, 100);
 
-    }, [params.id, dispatch]);
+    dispatch(addComment(params.id, mainComment))
+
+
     return (
         <div>
             <div className="add-comments">
 
-                <textarea name="comment" id="comemnt" cols="100" rows="2"></textarea>
-                <button>Add comment</button>
+                <textarea name="comment" id="comemnt" cols="100" rows="2" onChange={onMainComment} value={mainComment}></textarea>
+                <button >Add comment</button>
             </div>
             <div className="comments">
                 <div className="comment-box">
