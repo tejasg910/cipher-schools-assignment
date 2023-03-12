@@ -127,6 +127,7 @@ export const addLike = async (req, res, next) => {
       return res.status(200).json({
         success: true,
         message: "like removed successfully",
+        liked: false,
       });
     }
 
@@ -143,7 +144,22 @@ export const addLike = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "like added successfully",
+      liked: true,
     });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getAllVideos = async (req, res, next) => {
+  try {
+    const video = await Video.find({});
+
+    if (!video) return next(ErrorHandler("Something went wrong", 500));
+
+    if (video.length === 0) return next(ErrorHandler("No video found", 404));
+
+    res.status(200).json({ success: true, data: video });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

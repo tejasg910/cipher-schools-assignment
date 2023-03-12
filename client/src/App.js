@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "./components/Home";
-import VideoComp from "./components/VideoComp";
+import VideoComp from "./components/Video/VideoComp";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadUser } from "./redux/action/userAction";
@@ -31,7 +31,7 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <Navbar />
+      <Navbar isAuthenticated={isAuthenticated} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:id" element={<VideoComp />} />

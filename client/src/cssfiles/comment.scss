@@ -1,0 +1,21 @@
+.add-comments{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comments{
+    .user {
+            color: blue;
+        }
+    
+        .reply {
+            margin-left: 2rem;
+    
+            .user {
+                color: blue;
+            }
+        }
+}
